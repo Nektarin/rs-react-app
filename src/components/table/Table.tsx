@@ -3,6 +3,8 @@ import SearchBar from '../search/SearchBar';
 import PokemonsGrid from '../result/PokemonsGrid';
 import Spinner from '../spinner/Spinner';
 import { searchKey } from '../../utils/Constants';
+import ErrorBoundary from '../error/ErrorBoundary';
+import ErrorTrigger from '../error/ErrorTrigger';
 
 interface PokemonData {
   name: string;
@@ -68,10 +70,21 @@ class Table extends React.Component {
           onBtnSearchClick={this.handleClick}
           searchText={this.searchText}
         />
-        <div>
-          {this.state.isLoading && <Spinner />}
-          <PokemonsGrid pokemons={this.state.pokemons} />
-        </div>
+
+        <ErrorBoundary
+          fallback={
+            <div className="flex items-center justify-center bg-amber-700">
+              <div>Something went wrong!</div>
+            </div>
+          }
+        >
+          <div>
+            {this.state.isLoading && <Spinner />}
+            <PokemonsGrid pokemons={this.state.pokemons} />
+          </div>
+
+          <ErrorTrigger />
+        </ErrorBoundary>
       </div>
     );
   }
