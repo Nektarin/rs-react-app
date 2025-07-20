@@ -17,6 +17,7 @@
     "-": "^0.0.1",
     "@mswjs/interceptors": "^0.39.3",
     "@tailwindcss/vite": "^4.1.11",
+    "es-abstract": "^1.24.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
