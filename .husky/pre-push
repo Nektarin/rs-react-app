@@ -1,0 +1,7 @@
+echo "Running tests before push..."
+npm run test
+
+if [ $? -ne 0 ]; then
+  echo "Tests failed! Push rejected."
+  exit 1
+fi
